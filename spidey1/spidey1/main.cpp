@@ -1,7 +1,6 @@
-#include "graphics.h"
+#include "game.h"
 
 int main()
 {
-	Graphics graphics;
-	while (true){}
+	Game game;
 }
