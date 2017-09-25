@@ -1,10 +1,12 @@
 #include <SDL.h>
 #include <SDL_image.h>
+
 #include "graphics.h"
+#include "globals.h"
 
 Graphics::Graphics()
 {
-	SDL_CreateWindowAndRenderer(1280, 720, 0, &_window, &_renderer);
+	SDL_CreateWindowAndRenderer(globals::SCREEN_WIDTH, globals::SCREEN_HEIGHT, 0, &_window, &_renderer);
 	SDL_SetWindowTitle(_window, "Spidey Example");
 }
 
