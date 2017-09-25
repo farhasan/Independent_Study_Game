@@ -30,6 +30,7 @@ void Game::gameLoop()
 	Graphics graphics;
 	Input input;
 	SDL_Event event;
+	_player = Sprite(graphics, "sprites/DannyPhantom.png", 30, 488, 46, 46, 100, 100);
 
 	int LAST_UPDATE_TIME = SDL_GetTicks();
 
@@ -51,14 +52,18 @@ void Game::gameLoop()
 		const int CURRENT_TIME_MS = SDL_GetTicks();
 		int ELAPSED_TIME_MS = CURRENT_TIME_MS - LAST_UPDATE_TIME;
 		
-		update(min(ELAPSED_TIME_MS, MAX_FRAME_TIME);
+		update(min(ELAPSED_TIME_MS, MAX_FRAME_TIME));
 		LAST_UPDATE_TIME = CURRENT_TIME_MS;
+
+		draw(graphics);
 	}
 }
 
 void Game::draw(Graphics &graphics)
 {
-
+	graphics.clear();
+	_player.draw(graphics, 100, 100);
+	graphics.flip();
 }
 
 void Game::update(float elapsedTime)
