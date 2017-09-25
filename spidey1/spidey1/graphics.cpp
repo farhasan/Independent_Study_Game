@@ -7,7 +7,7 @@
 Graphics::Graphics()
 {
 	SDL_CreateWindowAndRenderer(globals::SCREEN_WIDTH, globals::SCREEN_HEIGHT, 0, &_window, &_renderer);
-	SDL_SetWindowTitle(_window, "Danny Phantom");
+	SDL_SetWindowTitle(_window, "Spidey Example");
 }
 
 Graphics::~Graphics()

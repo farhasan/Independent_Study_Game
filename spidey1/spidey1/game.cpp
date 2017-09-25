@@ -20,16 +20,17 @@ Game::Game()
 	gameLoop();
 }
 
-Game::~Game() {}
+Game::~Game()
+{
+
+}
 
 void Game::gameLoop()
 {
 	Graphics graphics;
 	Input input;
 	SDL_Event event;
-	_player = AnimatedSprite(graphics, "sprites/DannyPhantom.png", 30, 488, 45, 45, 100, 100, 125);
-	_player.setupAnimations();
-	_player.playAnimation("RunLeft");
+	_player = Sprite(graphics, "sprites/DannyPhantom.png", 30, 488, 46, 46, 100, 100);
 
 	int LAST_UPDATE_TIME = SDL_GetTicks();
 
@@ -67,5 +68,5 @@ void Game::draw(Graphics &graphics)
 
 void Game::update(float elapsedTime)
 {
-	_player.update(elapsedTime);
+
 }
