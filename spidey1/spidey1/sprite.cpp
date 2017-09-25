@@ -19,18 +19,12 @@ Sprite::Sprite(Graphics& graphics, const string &filePath, int sourceX, int sour
 	if (_spriteSheet == nullptr) { printf("\nUnable to load image\n"); }
 }
 
-Sprite::~Sprite()
-{
-
-}
+Sprite::~Sprite() {}
 
 void Sprite::draw(Graphics& graphics, int x, int y)
 {
-	SDL_Rect destinationRectangle = { x, y, _sourceRect.w * globals::spriteScale, _sourceRect.h * globals::spriteScale};
+	SDL_Rect destinationRectangle = { x, y, _sourceRect.w * globals::SPRITE_SCALE, _sourceRect.h * globals::SPRITE_SCALE};
 	graphics.blitSurface(_spriteSheet, &_sourceRect, &destinationRectangle);
 }
 
-void Sprite::update()
-{
-
-}
+void Sprite::update() {}
