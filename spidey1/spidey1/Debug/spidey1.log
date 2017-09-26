@@ -1,9 +1,0 @@
-﻿  sprite.cpp
-c:\users\shup\downloads\programming crap\c++\independent_study_game\spidey1\spidey1\sprite.cpp(29): warning C4838: conversion from 'float' to 'int' requires a narrowing conversion
-c:\users\shup\downloads\programming crap\c++\independent_study_game\spidey1\spidey1\sprite.cpp(29): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-  graphics.cpp
-  game.cpp
-c:\users\shup\downloads\programming crap\c++\independent_study_game\spidey1\spidey1\game.cpp(55): warning C4244: 'argument': conversion from 'const int' to 'float', possible loss of data
-  Generating Code...
-  spidey1.vcxproj -> C:\Users\Shup\Downloads\Programming Crap\C++\Independent_Study_Game\spidey1\Debug\spidey1.exe
-  spidey1.vcxproj -> C:\Users\Shup\Downloads\Programming Crap\C++\Independent_Study_Game\spidey1\Debug\spidey1.pdb (Partial PDB)
