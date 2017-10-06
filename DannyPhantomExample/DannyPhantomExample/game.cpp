@@ -30,7 +30,7 @@ void Game::gameLoop()
 	Graphics graphics;
 	Input input;
 	SDL_Event event;
-	_player = AnimatedSprite(graphics, "sprites/DannyPhantom.png", 30, 488, 46, 46, 100, 100, 125);
+	_player = AnimatedSprite(graphics, "sprites/dannyphantom.png", 78, 438, 59, 46, 100, 100, 125);
 	_player.setupAnimations();
 	_player.playAnimation("Idle");
 

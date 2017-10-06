@@ -20,7 +20,7 @@ AnimatedSprite::AnimatedSprite(Graphics& graphics, const string& filePath, int s
 void AnimatedSprite::addAnimation(int frames, int x, int y, string name, int width, int height, Vector2 offset) {
 	vector<SDL_Rect> rectangles;
 	for (int i = 0; i < frames; i++) {
-		SDL_Rect newRect = { x + ( i * width), y, width, height };
+		SDL_Rect newRect = { x + (i * width), y, width, height };
 		rectangles.push_back(newRect);
 	}
 	_animations.insert(pair<string, vector<SDL_Rect> >(name, rectangles));
@@ -84,6 +84,5 @@ void AnimatedSprite::draw(Graphics& graphics, int x, int y) {
 void AnimatedSprite::animationDone(std::string currentAnimation) {}
 
 void AnimatedSprite::setupAnimations() {
-	addAnimation(3, 30, 488, "Idle", 45, 45, Vector2(0, 0));
-	addAnimation(4, 120, 488, "RunLeft", 45, 45, Vector2(0, 0));
+	addAnimation(3, 78, 438, "Idle", 59, 46, Vector2(0, 0));
 }
