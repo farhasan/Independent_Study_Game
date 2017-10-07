@@ -18,11 +18,13 @@ public:
 	void draw(Graphics& graphics, int x, int y);
 
 protected:
+	float _x, _y;
+
 	SDL_Rect _sourceRect;
 	SDL_Texture* _spriteSheet;
 
 private:
-	float _x, _y;
+	
 };
 
 #endif

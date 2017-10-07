@@ -17,7 +17,7 @@ AnimatedSprite::AnimatedSprite(Graphics& graphics, const string& filePath, int s
 	_currentAnimation("")
 {}
 
-void AnimatedSprite::addAnimation(int frames, int x, int y, string name, int width, int height, Vector2 offset) {
+void AnimatedSprite::addRightAnimation(int frames, int x, int y, string name, int width, int height, Vector2 offset) {
 	vector<SDL_Rect> rectangles;
 	for (int i = 0; i < frames; i++) {
 		SDL_Rect newRect = { x + (i * width), y, width, height };
@@ -25,6 +25,21 @@ void AnimatedSprite::addAnimation(int frames, int x, int y, string name, int wid
 	}
 	_animations.insert(pair<string, vector<SDL_Rect> >(name, rectangles));
 	_offsets.insert(pair<string, Vector2>(name, offset));
+}
+
+void AnimatedSprite::addLeftAnimation(int frames, int x, int y, string name, int width, int height, Vector2 offset) {
+	vector<SDL_Rect> rectangles;
+	for (int i = 0; i < frames; i++) {
+		SDL_Rect newRect = { x - (i * width), y, width, height };
+		rectangles.push_back(newRect);
+	}
+	_animations.insert(pair<string, vector<SDL_Rect> >(name, rectangles));
+	_offsets.insert(pair<string, Vector2>(name, offset));
+}
+
+void AnimatedSprite::addFrameToAnimation(map <string, vector<SDL_Rect>>& animations, string animationName, int x, int y, int width, int height) {
+	SDL_Rect newRect = { x, y, width, height };
+	animations[animationName].push_back(newRect);
 }
 
 void AnimatedSprite::resetAnimations() {
@@ -80,9 +95,19 @@ void AnimatedSprite::draw(Graphics& graphics, int x, int y) {
 		graphics.blitSurface(_spriteSheet, &sourceRect, &destinationRectangle);
 	}
 }
-
-void AnimatedSprite::animationDone(std::string currentAnimation) {}
-
+/*
 void AnimatedSprite::setupAnimations() {
 	addAnimation(3, 78, 438, "Idle", 59, 46, Vector2(0, 0));
+	
+	addAnimation(3, 261, 438, "Run", 54, 46, Vector2(0, 0));
+	addFrameToAnimation(_animations, "Run", 15, 499, 54, 46);
+
+	addAnimation(2, 69, 556, "Punch1", 60, 48, Vector2(0, 0));
+	addAnimation(2, 192, 556, "Punch2", 60, 48, Vector2(0, 0));
+	addAnimation(2, 252, 556, "Punch3", 60, 48, Vector2(0, 0));
+}*/
+
+map<string, vector<SDL_Rect>> AnimatedSprite::getAnimations()
+{
+	return _animations;
 }

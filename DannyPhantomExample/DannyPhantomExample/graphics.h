@@ -4,6 +4,8 @@
 #include <map>
 #include <string>
 
+#include "animatedsprite.h"
+
 using std::string;
 using std::map;
 

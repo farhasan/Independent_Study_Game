@@ -24,23 +24,28 @@ public:
 	void playAnimation(string animation, bool once = false);
 	void update(int elapsedTime);
 	void draw(Graphics& graphics, int x, int y);
-	virtual void setupAnimations();
+
+	map<string, vector<SDL_Rect>> getAnimations();
 
 protected:
 	double _timeToUpdate;
 	bool _currentAnimationOnce;
 	string _currentAnimation;
 
-	void addAnimation(int frames, int x, int y, string name, int width, int height, Vector2 offset);
+	void addRightAnimation(int frames, int x, int y, string name, int width, int height, Vector2 offset);
+	void addLeftAnimation(int frames, int x, int y, string name, int width, int height, Vector2 offset);
+	void addFrameToAnimation(map <string, vector<SDL_Rect>>& animations, string animationName, int x, int y, int width, int height);
 	void resetAnimations();
 	void stopAnimation();
 	void setVisible(bool visible);
-	virtual void animationDone(string currentAnimation);
+	virtual void animationDone(string currentAnimation) = 0;
+	virtual void setupAnimations() = 0;
 
 private:
 	int _frameIndex;
 	double _timeElapsed;
 	bool _visible;
+
 	map <string, vector<SDL_Rect>> _animations;
 	map <string, Vector2> _offsets;
 
