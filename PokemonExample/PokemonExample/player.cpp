@@ -3,7 +3,8 @@
 
 namespace player_constants
 {
-	const float RUN_SPEED = 0.2f;
+	const float WALK_SPEED = 0.13f;
+	const float RUN_SPEED = 0.23f;
 	const float JUMP_SPEED = 0.7f;
 }
 
@@ -30,40 +31,76 @@ void Player::setupAnimations()
 	addAnimation(3, 297, 32, "WalkUp", 23, 21, Vector2(0, 0));
 	addAnimation(3, 88, 32, "WalkDown", 22, 21, Vector2(0, 0));
 	addAnimation(3, 770, 32, "WalkLeft", 23, 21, Vector2(0, 0));
-	
 	addAnimation(3, 189, 32, "WalkRight", 23, 21, Vector2(0, 0));
+
+	addAnimation(4, 271, 5, "RunUp", 23, 21, Vector2(0, 0));
+	addAnimation(4, 62, 5, "RunDown", 23, 21, Vector2(0, 0));
+	addAnimation(4, 743, 5, "RunLeft", 23, 21, Vector2(0, 0));
+	addAnimation(4, 168, 5, "RunRight", 23, 21, Vector2(0, 0));
 }
 
 void Player::moveUp()
 {
-	_dy = -player_constants::RUN_SPEED;
+	_dy = -player_constants::WALK_SPEED;
+	_dx = 0.0f;
 	playAnimation("WalkUp");
 	facing = UP;
-	printf("moving up\n");
+}
+
+void Player::runUp()
+{
+	_dy = -player_constants::RUN_SPEED;
+	_dx = 0.0f;
+	playAnimation("RunUp");
+	facing = UP;
 }
 
 void Player::moveDown()
 {
-	_dy = player_constants::RUN_SPEED;
+	_dy = player_constants::WALK_SPEED;
+	_dx = 0.0f;
 	playAnimation("WalkDown");
 	facing = DOWN;
-	printf("moving down\n");
+}
+
+void Player::runDown()
+{
+	_dy = player_constants::RUN_SPEED;
+	_dx = 0.0f;
+	playAnimation("RunDown");
+	facing = DOWN;
 }
 
 void Player::moveRight()
 {
-	_dx = player_constants::RUN_SPEED;
+	_dx = player_constants::WALK_SPEED;
+	_dy = 0.0f;
 	playAnimation("WalkRight");
 	facing = RIGHT;
-	printf("moving right\n");
+}
+
+void Player::runRight()
+{
+	_dx = player_constants::RUN_SPEED;
+	_dy = 0.0f;
+	playAnimation("RunRight");
+	facing = RIGHT;
 }
 
 void Player::moveLeft()
 {
-	_dx = -player_constants::RUN_SPEED;
+	_dx = -player_constants::WALK_SPEED;
+	_dy = 0.0f;
 	playAnimation("WalkLeft");
 	facing = LEFT;
-	printf("moving left\n");
+}
+
+void Player::runLeft()
+{
+	_dx = -player_constants::RUN_SPEED;
+	_dy = 0.0f;
+	playAnimation("RunLeft");
+	facing = LEFT;
 }
 
 void Player::stopMoving()

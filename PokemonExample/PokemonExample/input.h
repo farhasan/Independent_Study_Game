@@ -9,7 +9,7 @@ using std::map;
 class Input
 {
 public:
-	void beginNewFrame();
+	//void beginNewFrame();
 	void keyUpEvent(const SDL_Event& event);
 	void keyDownEvent(const SDL_Event& event);
 	bool wasKeyPressed(SDL_Scancode key);

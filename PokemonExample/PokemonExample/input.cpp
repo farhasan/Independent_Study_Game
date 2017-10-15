@@ -1,10 +1,11 @@
 #include "input.h"
 
+/*
 void Input::beginNewFrame()
 {
 	_pressedKeys.clear();
 	_releasedKeys.clear();
-}
+}*/
 
 void Input::keyDownEvent(const SDL_Event& event)
 {

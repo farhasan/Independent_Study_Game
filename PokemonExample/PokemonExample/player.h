@@ -20,8 +20,13 @@ public:
 	void moveDown();
 	void moveRight();
 	void moveLeft();
+
+	void runUp();
+	void runDown();
+	void runLeft();
+	void runRight();
+
 	void stopMoving();
-	void jump();
 
 	virtual void animationDone(string currentAnimation);
 	virtual void setupAnimations();

@@ -7,6 +7,7 @@
 #include "input.h"
 
 using std::min;
+using std::pair;
 
 namespace
 {
@@ -36,9 +37,7 @@ void Game::gameLoop()
 
 	while (true)
 	{
-		input.beginNewFrame();
-
-		if (SDL_PollEvent(&event))
+		while (SDL_PollEvent(&event))
 		{
 			if (event.type == SDL_KEYDOWN)
 			{
@@ -46,22 +45,39 @@ void Game::gameLoop()
 			}
 			else if (event.type == SDL_KEYUP) { input.keyUpEvent(event); }
 			else if (event.type == SDL_QUIT) { return; }
-		}
-		if (input.wasKeyPressed(SDL_SCANCODE_ESCAPE) == true) { return; }
+			if (input.wasKeyPressed(SDL_SCANCODE_ESCAPE)) { return; }
 
-		else if (input.isKeyHeld(SDL_SCANCODE_UP) == true) { _player.moveUp(); }
-		else if (input.isKeyHeld(SDL_SCANCODE_DOWN) == true) { _player.moveDown(); }
-		else if (input.isKeyHeld(SDL_SCANCODE_RIGHT) == true) { _player.moveRight(); }
-		else if (input.isKeyHeld(SDL_SCANCODE_LEFT) == true) { _player.moveLeft(); }
+			if
+				(
+					!input.isKeyHeld(SDL_SCANCODE_UP) &&
+					!input.isKeyHeld(SDL_SCANCODE_DOWN) &&
+					!input.isKeyHeld(SDL_SCANCODE_LEFT) &&
+					!input.isKeyHeld(SDL_SCANCODE_RIGHT)
+				)
+			{
+				_player.stopMoving();
+			}
 
-		if (
-			!input.isKeyHeld(SDL_SCANCODE_UP) && 
-			!input.isKeyHeld(SDL_SCANCODE_DOWN) &&
-			!input.isKeyHeld(SDL_SCANCODE_LEFT) &&
-			!input.isKeyHeld(SDL_SCANCODE_RIGHT)
-			)
-		{
-			_player.stopMoving(); 
+			else if (input.isKeyHeld(SDL_SCANCODE_UP))
+			{
+				if(!input.isKeyHeld(SDL_SCANCODE_X)) { _player.moveUp(); }
+				else { _player.runUp(); }
+			} 
+			else if (input.isKeyHeld(SDL_SCANCODE_DOWN))
+			{
+				if (!input.isKeyHeld(SDL_SCANCODE_X)) { _player.moveDown(); }
+				else { _player.runDown(); }
+			}
+			else if (input.isKeyHeld(SDL_SCANCODE_LEFT))
+			{
+				if (!input.isKeyHeld(SDL_SCANCODE_X)) { _player.moveLeft(); }
+				else { _player.runLeft(); }
+			}
+			else if (input.isKeyHeld(SDL_SCANCODE_RIGHT))
+			{
+				if (!input.isKeyHeld(SDL_SCANCODE_X)) { _player.moveRight(); }
+				else { _player.runRight(); }
+			}
 		}
 
 		const int CURRENT_TIME_MS = SDL_GetTicks();
