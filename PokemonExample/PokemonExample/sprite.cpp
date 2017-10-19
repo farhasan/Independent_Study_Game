@@ -30,7 +30,7 @@ void Sprite::draw(Graphics& graphics, int x, int y)
 	graphics.blitSurface(_spriteSheet, &_sourceRect, &destinationRectangle);
 }
 
-void Sprite::update()
+void Sprite::update(int elapsedTime)
 {
 
 }

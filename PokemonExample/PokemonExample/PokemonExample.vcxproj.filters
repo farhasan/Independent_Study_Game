@@ -36,28 +36,34 @@
     <ClCompile Include="player.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="map.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="graphics.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="globals.h">
-      <Filter>Source Files</Filter>
+    <ClInclude Include="animatedsprite.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="game.h">
-      <Filter>Source Files</Filter>
+      <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="animatedsprite.h">
-      <Filter>Source Files</Filter>
+    <ClInclude Include="globals.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="sprite.h">
-      <Filter>Source Files</Filter>
+    <ClInclude Include="graphics.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="input.h">
-      <Filter>Source Files</Filter>
+      <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="player.h">
-      <Filter>Source Files</Filter>
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="sprite.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="map.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

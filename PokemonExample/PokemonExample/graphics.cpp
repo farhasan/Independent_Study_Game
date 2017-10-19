@@ -8,11 +8,13 @@ Graphics::Graphics()
 {
 	SDL_CreateWindowAndRenderer(globals::SCREEN_WIDTH, globals::SCREEN_HEIGHT, 0, &_window, &_renderer);
 	SDL_SetWindowTitle(_window, "Pokemon Emerald");
+	SDL_ShowCursor(SDL_DISABLE);
 }
 
 Graphics::~Graphics()
 {
 	SDL_DestroyWindow(_window);
+	SDL_DestroyRenderer(_renderer);
 }
 
 SDL_Surface* Graphics::loadImage(const string& filePath)

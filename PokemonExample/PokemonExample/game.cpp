@@ -3,6 +3,7 @@
 #include <SDL.h>
 
 #include "game.h"
+#include "globals.h"
 #include "graphics.h"
 #include "input.h"
 
@@ -32,6 +33,7 @@ void Game::gameLoop()
 	Input input;
 	SDL_Event event;
 	_player = Player(graphics, 100, 100);
+	map = Map::createTestMap(graphics);
 
 	int LAST_UPDATE_TIME = SDL_GetTicks();
 
@@ -93,6 +95,7 @@ void Game::gameLoop()
 void Game::draw(Graphics &graphics)
 {
 	graphics.clear();
+	map->draw(graphics);
 	_player.draw(graphics);
 	graphics.flip();
 }
@@ -100,4 +103,5 @@ void Game::draw(Graphics &graphics)
 void Game::update(float elapsedTime)
 {
 	_player.update(elapsedTime);
+	map->update(elapsedTime);
 }

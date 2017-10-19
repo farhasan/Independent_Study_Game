@@ -2,6 +2,7 @@
 #define GAME_H
 
 #include "player.h"
+#include "map.h"
 
 class Graphics;
 
@@ -16,6 +17,7 @@ private:
 	void update(float elapsedTime);
 
 	Player _player;
+	Map* map;
 };
 
 #endif // !GAME_H
