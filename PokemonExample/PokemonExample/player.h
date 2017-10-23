@@ -18,15 +18,17 @@ public:
 
 	void moveUp();
 	void moveDown();
-	void moveRight();
-	void moveLeft();
+	void moveRight(int levelWidth);
+	void moveLeft(int levelWidth);
 
 	void runUp();
 	void runDown();
-	void runLeft();
-	void runRight();
+	void runLeft(int levelWidth);
+	void runRight(int levelWidth);
 
 	void stopMoving();
+
+	void setCamera();
 
 	virtual void animationDone(string currentAnimation);
 	virtual void setupAnimations();

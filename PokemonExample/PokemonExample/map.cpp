@@ -67,6 +67,17 @@ void Map::createPath(Map* map, Sprite* leftTile, Sprite* middleTile, Sprite* rig
 	}
 }
 
+void Map::createRegularGrass(Map* map, Sprite* regularGrass, int row, int col, int numRows, int numCols)
+{
+	for (int _row = row; _row < numRows; _row++)
+	{
+		for (int _col = col; _col < numCols; _col++)
+		{
+			map->mapTiles[_row][_col] = regularGrass;
+		}
+	}
+}
+
 Map* Map::createTestMap(Graphics& graphics) {
 	Map* map = new Map();
 
@@ -82,22 +93,22 @@ Map* Map::createTestMap(Graphics& graphics) {
 	Sprite* rightEndPathTile(new Sprite(graphics, "sprites/tileset.png", 16, 560, 32, 48, 0, 0));
 
 	map->mapTiles = vector<vector<Sprite*>>(numRows, vector<Sprite*>(numCols));
-
 	
 	createSmallTrees(map, smallTrees, 0, numCols / 2);
 	createPokeCenter(map, pokeCenter, 4, 4);
+	
+	createRegularGrass(map, regularGrass, 4, 0, 10, 4);
+	createRegularGrass(map, regularGrass, 8, 4, 10, 8);
+	createRegularGrass(map, regularGrass, 4, 8, 10, numCols/2);
+
 	createPath(map, leftEndPathTile, middlePathTile, rightEndPathTile, 10, numCols / 2);
 	createPokeMart(map, pokeMart, 14, 28);
 	
-	/*
-	for (int row = 4; row < 19; row++)
-	{
-		for (int col = 0; col < numCols; col++)
-		{
-			map->mapTiles[row][col] = regularGrass;
-		}
-	}*/
-
+	createRegularGrass(map, regularGrass, 13, 0, 19, 28);
+	createRegularGrass(map, regularGrass, 13, 32, 19, numCols/2);
+	createRegularGrass(map, regularGrass, 13, 28, 14, 32);
+	createRegularGrass(map, regularGrass, 18, 28, 19, 32);
+	
 	createSmallTrees(map, smallTrees, 19, numCols / 2);
 
 	return map;

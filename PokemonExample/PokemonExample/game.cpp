@@ -32,8 +32,11 @@ void Game::gameLoop()
 	Graphics graphics;
 	Input input;
 	SDL_Event event;
-	_player = Player(graphics, 100, 100);
-	map = Map::createTestMap(graphics);
+	
+	_player = Player(graphics, 80, 200);
+	maps.push_back(Map::createTestMap(graphics));
+
+	//SDL_Rect camera = { 0, 0, globals::SCREEN_WIDTH, globals::SCREEN_HEIGHT };
 
 	int LAST_UPDATE_TIME = SDL_GetTicks();
 
@@ -72,36 +75,36 @@ void Game::gameLoop()
 			}
 			else if (input.isKeyHeld(SDL_SCANCODE_LEFT))
 			{
-				if (!input.isKeyHeld(SDL_SCANCODE_X)) { _player.moveLeft(); }
-				else { _player.runLeft(); }
+				if (!input.isKeyHeld(SDL_SCANCODE_X)) { _player.moveLeft(1280); }
+				else { _player.runLeft(1280); }
 			}
 			else if (input.isKeyHeld(SDL_SCANCODE_RIGHT))
 			{
-				if (!input.isKeyHeld(SDL_SCANCODE_X)) { _player.moveRight(); }
-				else { _player.runRight(); }
+				if (!input.isKeyHeld(SDL_SCANCODE_X)) { _player.moveRight(1280); }
+				else { _player.runRight(1280); }
 			}
 		}
 
 		const int CURRENT_TIME_MS = SDL_GetTicks();
 		int ELAPSED_TIME_MS = CURRENT_TIME_MS - LAST_UPDATE_TIME;
 
-		update(min(ELAPSED_TIME_MS, MAX_FRAME_TIME));
+		update(min(ELAPSED_TIME_MS, MAX_FRAME_TIME), 0);
 		LAST_UPDATE_TIME = CURRENT_TIME_MS;
 
-		draw(graphics);
+		draw(graphics, 0);
 	}
 }
 
-void Game::draw(Graphics &graphics)
+void Game::draw(Graphics &graphics, int mapNum)
 {
 	graphics.clear();
-	map->draw(graphics);
+	maps[mapNum]->draw(graphics);
 	_player.draw(graphics);
 	graphics.flip();
 }
 
-void Game::update(float elapsedTime)
+void Game::update(float elapsedTime, int mapNum)
 {
 	_player.update(elapsedTime);
-	map->update(elapsedTime);
+	maps[mapNum]->update(elapsedTime);
 }

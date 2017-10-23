@@ -13,11 +13,11 @@ public:
 	~Game();
 private:
 	void gameLoop();
-	void draw(Graphics &graphics);
-	void update(float elapsedTime);
+	void draw(Graphics &graphics, int mapNum);
+	void update(float elapsedTime, int mapNum);
 
 	Player _player;
-	Map* map;
+	vector<Map*> maps;
 };
 
 #endif // !GAME_H

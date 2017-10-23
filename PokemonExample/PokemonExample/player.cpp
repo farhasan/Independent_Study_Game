@@ -4,7 +4,7 @@
 namespace player_constants
 {
 	const float WALK_SPEED = 0.13f;
-	const float RUN_SPEED = 0.23f;
+	const float RUN_SPEED = 0.4f;
 	const float JUMP_SPEED = 0.7f;
 }
 
@@ -71,36 +71,52 @@ void Player::runDown()
 	facing = DOWN;
 }
 
-void Player::moveRight()
+void Player::moveRight(int levelWidth)
 {
-	_dx = player_constants::WALK_SPEED;
-	_dy = 0.0f;
-	playAnimation("WalkRight");
-	facing = RIGHT;
+	if (_x > (levelWidth/2)) { _dx = 0.0f; }
+	else
+	{
+		_dx = player_constants::WALK_SPEED;
+		_dy = 0.0f;
+		playAnimation("WalkRight");
+		facing = RIGHT;
+	}
 }
 
-void Player::runRight()
+void Player::runRight(int levelWidth)
 {
-	_dx = player_constants::RUN_SPEED;
-	_dy = 0.0f;
-	playAnimation("RunRight");
-	facing = RIGHT;
+	if (_x > (levelWidth/2 )) { _dx = 0.0f; }
+	else
+	{
+		_dx = player_constants::RUN_SPEED;
+		_dy = 0.0f;
+		playAnimation("RunRight");
+		facing = RIGHT;
+	}
 }
 
-void Player::moveLeft()
+void Player::moveLeft(int levelWidth)
 {
-	_dx = -player_constants::WALK_SPEED;
-	_dy = 0.0f;
-	playAnimation("WalkLeft");
-	facing = LEFT;
+	if (_x < 5) { _dx = 0.0f; }
+	else
+	{
+		_dx = -player_constants::WALK_SPEED;
+		_dy = 0.0f;
+		playAnimation("WalkLeft");
+		facing = LEFT;
+	}
 }
 
-void Player::runLeft()
+void Player::runLeft(int levelWidth)
 {
-	_dx = -player_constants::RUN_SPEED;
-	_dy = 0.0f;
-	playAnimation("RunLeft");
-	facing = LEFT;
+	if (_x < 5) { _dx = 0.0f; }
+	else
+	{
+		_dx = -player_constants::RUN_SPEED;
+		_dy = 0.0f;
+		playAnimation("RunLeft");
+		facing = LEFT;
+	}
 }
 
 void Player::stopMoving()
@@ -128,6 +144,11 @@ void Player::stopMoving()
 }
 
 void Player::animationDone(string currentAnimation)
+{
+
+}
+
+void Player::setCamera()
 {
 
 }

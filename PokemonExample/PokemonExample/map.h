@@ -20,6 +20,7 @@ public:
 	static void createPokeMart(Map* map, Sprite* pokeMart, int rowCoord, int colCoord);
 	static void createSmallTrees(Map* map, Sprite* tree, int rowCoord, int colCoord);
 	static void createPath(Map* map, Sprite* leftTile, Sprite* middleTile, Sprite* rightTile, int rowCoord, int numCols);
+	static void createRegularGrass(Map* map, Sprite* regularGrass, int row, int col, int numRows, int numCols);
 private:
 	vector<vector<Sprite*>> mapTiles;
 };
