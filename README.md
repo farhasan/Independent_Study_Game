@@ -11,3 +11,4 @@ This project features:
 -creating a map for the character to live in
 -screen scrolling so the view follows the character as he moves through the map
 -very basic collision detection to keep the player within the boundaries of the map
+-opening an audio channel to play an mp3 file
