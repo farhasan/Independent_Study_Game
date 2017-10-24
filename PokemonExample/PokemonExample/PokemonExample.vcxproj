@@ -22,7 +22,7 @@
     <VCProjectVersion>15.0</VCProjectVersion>
     <ProjectGuid>{F09615D0-D749-431B-B454-F6C911165575}</ProjectGuid>
     <RootNamespace>PokemonExample</RootNamespace>
-    <WindowsTargetPlatformVersion>10.0.15063.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0.16299.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -70,8 +70,12 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <IncludePath>C:\Users\Shup\Downloads\Programming Crap\C++\glew\include;C:\Users\Shup\Downloads\Programming Crap\C++\SDL2_image-2.0.1\include;C:\Users\Shup\Downloads\Programming Crap\C++\SDL2_mixer-2.0.1\include;C:\Users\Shup\Downloads\Programming Crap\C++\SDL2-2.0.5\include;$(IncludePath)</IncludePath>
-    <LibraryPath>C:\Users\Shup\Downloads\Programming Crap\C++\glew\lib\Release\Win32;C:\Users\Shup\Downloads\Programming Crap\C++\SDL2_image-2.0.1\lib\x86;C:\Users\Shup\Downloads\Programming Crap\C++\SDL2_mixer-2.0.1\lib\x86;C:\Users\Shup\Downloads\Programming Crap\C++\SDL2-2.0.5\lib\x86;$(LibraryPath)</LibraryPath>
+    <IncludePath>C:\Users\Farhan\Downloads\Program Crap\C++\SDL2_image-2.0.1\include;C:\Users\Farhan\Downloads\Program Crap\C++\SDL2_mixer-2.0.1\include;C:\Users\Farhan\Downloads\Program Crap\C++\SDL2-2.0.6\include;$(IncludePath)</IncludePath>
+    <LibraryPath>C:\Users\Farhan\Downloads\Program Crap\C++\SDL2_image-2.0.1\lib\x86;C:\Users\Farhan\Downloads\Program Crap\C++\SDL2_mixer-2.0.1\lib\x86;C:\Users\Farhan\Downloads\Program Crap\C++\SDL2-2.0.6\lib\x86;$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <IncludePath>C:\Users\Farhan\Downloads\Program Crap\C++\SDL2_image-2.0.1\include;C:\Users\Farhan\Downloads\Program Crap\C++\SDL2_mixer-2.0.1\include;C:\Users\Farhan\Downloads\Program Crap\C++\SDL2-2.0.6\include;$(IncludePath)</IncludePath>
+    <LibraryPath>C:\Users\Farhan\Downloads\Program Crap\C++\SDL2_image-2.0.1\lib\x86;C:\Users\Farhan\Downloads\Program Crap\C++\SDL2_mixer-2.0.1\lib\x86;C:\Users\Farhan\Downloads\Program Crap\C++\SDL2-2.0.6\lib\x86;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -90,6 +94,11 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
     </ClCompile>
+    <Link>
+      <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2_image.lib;SDL2_mixer.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <SubSystem>Console</SubSystem>
+      <TargetMachine>MachineX86</TargetMachine>
+    </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>

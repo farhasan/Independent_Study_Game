@@ -1,6 +1,7 @@
 #include <algorithm>
 
 #include <SDL.h>
+#include <SDL_mixer.h>
 
 #include "game.h"
 #include "globals.h"
@@ -24,7 +25,7 @@ Game::Game()
 
 Game::~Game()
 {
-
+	
 }
 
 void Game::gameLoop()
@@ -37,6 +38,12 @@ void Game::gameLoop()
 	maps.push_back(Map::createTestMap(graphics));
 
 	SDL_Rect camera = { 0, 0, globals::SCREEN_WIDTH, globals::SCREEN_HEIGHT };
+	
+	Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 4096);
+
+	Mix_Music *bgm = Mix_LoadMUS("music/route101.mp3");
+	Mix_PlayMusic(bgm, -1);
+	
 
 	int LAST_UPDATE_TIME = SDL_GetTicks();
 
@@ -101,8 +108,9 @@ void Game::gameLoop()
 		else if (camera.y >= 196) { camera.y = 196; }
 		
 		draw(graphics, 0, camera);
-		printf("player.y: %f\n", _player.getY());
 	}
+	
+	Mix_FreeMusic(bgm);
 }
 
 void Game::draw(Graphics &graphics, int mapNum, SDL_Rect& camera)
