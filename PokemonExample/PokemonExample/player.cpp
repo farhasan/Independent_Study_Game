@@ -4,8 +4,7 @@
 namespace player_constants
 {
 	const float WALK_SPEED = 0.13f;
-	const float RUN_SPEED = 0.4f;
-	const float JUMP_SPEED = 0.7f;
+	const float RUN_SPEED = 0.23f;
 }
 
 Player::Player()

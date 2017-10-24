@@ -26,7 +26,7 @@ Sprite::~Sprite()
 
 void Sprite::draw(Graphics& graphics, int x, int y, SDL_Rect& camera)
 {
-	SDL_Rect destinationRectangle = { x-camera.x, y-camera.y, _sourceRect.w * globals::SPRITE_SCALE, _sourceRect.h * globals::SPRITE_SCALE };
+	SDL_Rect destinationRectangle = { x-(camera.x/1.5), y-(camera.y/1.5), _sourceRect.w * globals::SPRITE_SCALE, _sourceRect.h * globals::SPRITE_SCALE };
 	graphics.blitSurface(_spriteSheet, &_sourceRect, &destinationRectangle);
 }
 

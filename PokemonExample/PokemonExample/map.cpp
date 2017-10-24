@@ -138,3 +138,4 @@ void Map::draw(Graphics& graphics, SDL_Rect& camera) const
 		}
 	}
 }
+
