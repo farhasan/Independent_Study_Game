@@ -6,6 +6,7 @@ using std::vector;
 
 class Graphics;
 class Sprite;
+struct SDL_Rect;
 
 
 class Map
@@ -14,7 +15,9 @@ public:
 	static Map* createTestMap(Graphics& graphics);
 
 	void update(int elapsedTime);
-	void draw(Graphics& graphics) const;
+	void draw(Graphics& graphics, SDL_Rect& camera) const;
+
+	vector<vector<Sprite*>> getMapTiles;
 	
 	static void createPokeCenter(Map* map, Sprite* pokeCenter, int rowCoord, int colCoord);
 	static void createPokeMart(Map* map, Sprite* pokeMart, int rowCoord, int colCoord);

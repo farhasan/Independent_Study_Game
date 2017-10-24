@@ -15,7 +15,7 @@ public:
 	Sprite(Graphics& graphics, const string &filePath, int sourceX, int sourceY, int width, int height, float posX, float posY);
 	virtual ~Sprite();
 	virtual void update(int elapsedTime);
-	void draw(Graphics& graphics, int x, int y);
+	void draw(Graphics& graphics, int x, int y, SDL_Rect& camera);
 
 protected:
 	float _x, _y;

@@ -32,11 +32,11 @@ void Game::gameLoop()
 	Graphics graphics;
 	Input input;
 	SDL_Event event;
-	
+
 	_player = Player(graphics, 80, 200);
 	maps.push_back(Map::createTestMap(graphics));
 
-	//SDL_Rect camera = { 0, 0, globals::SCREEN_WIDTH, globals::SCREEN_HEIGHT };
+	SDL_Rect camera = { 0, 0, globals::SCREEN_WIDTH, globals::SCREEN_HEIGHT };
 
 	int LAST_UPDATE_TIME = SDL_GetTicks();
 
@@ -91,14 +91,24 @@ void Game::gameLoop()
 		update(min(ELAPSED_TIME_MS, MAX_FRAME_TIME), 0);
 		LAST_UPDATE_TIME = CURRENT_TIME_MS;
 
-		draw(graphics, 0);
+		camera.x = _player.getX() - 480;
+		camera.y = _player.getY() - 270;
+
+		if (camera.x < 0) { camera.x = 0; }
+		else if (camera.x >= 320) { camera.x = 320; }
+		
+		if (camera.y < 0) { camera.y = 0; }
+		else if (camera.y >= 196) { camera.y = 196; }
+		
+		draw(graphics, 0, camera);
+		printf("player.y: %f\n", _player.getY());
 	}
 }
 
-void Game::draw(Graphics &graphics, int mapNum)
+void Game::draw(Graphics &graphics, int mapNum, SDL_Rect& camera)
 {
 	graphics.clear();
-	maps[mapNum]->draw(graphics);
+	maps[mapNum]->draw(graphics, camera);
 	_player.draw(graphics);
 	graphics.flip();
 }

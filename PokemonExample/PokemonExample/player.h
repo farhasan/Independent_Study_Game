@@ -16,6 +16,9 @@ public:
 	void draw(Graphics& graphics);
 	void update(float elapsedTime);
 
+	float getX();
+	float getY();
+
 	void moveUp();
 	void moveDown();
 	void moveRight(int levelWidth);
@@ -27,8 +30,6 @@ public:
 	void runRight(int levelWidth);
 
 	void stopMoving();
-
-	void setCamera();
 
 	virtual void animationDone(string currentAnimation);
 	virtual void setupAnimations();

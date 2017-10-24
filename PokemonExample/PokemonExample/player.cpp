@@ -20,6 +20,16 @@ Player::Player(Graphics& graphics, float x, float y) :
 	setupAnimations();
 }
 
+float Player::getX()
+{
+	return _x;
+}
+
+float Player::getY()
+{
+	return _y;
+}
+
 void Player::setupAnimations()
 {
 	addAnimation(1, 271, 32, "IdleUp", 23, 21, Vector2(0, 0));
@@ -41,39 +51,55 @@ void Player::setupAnimations()
 
 void Player::moveUp()
 {
-	_dy = -player_constants::WALK_SPEED;
-	_dx = 0.0f;
-	playAnimation("WalkUp");
-	facing = UP;
+	if (_y < -8.0f) { _dy = 0.0f; }
+	else
+	{
+		_dy = -player_constants::WALK_SPEED;
+		_dx = 0.0f;
+		playAnimation("WalkUp");
+		facing = UP;
+	}
 }
 
 void Player::runUp()
 {
-	_dy = -player_constants::RUN_SPEED;
-	_dx = 0.0f;
-	playAnimation("RunUp");
-	facing = UP;
+	if (_y < -8.0f) { _dy = 0.0f; }
+	else
+	{
+		_dy = -player_constants::RUN_SPEED;
+		_dx = 0.0f;
+		playAnimation("RunUp");
+		facing = UP;
+	}
 }
 
 void Player::moveDown()
 {
-	_dy = player_constants::WALK_SPEED;
-	_dx = 0.0f;
-	playAnimation("WalkDown");
-	facing = DOWN;
+	if (_y > 503.0f) { _dy = 0.0f; }
+	else
+	{
+		_dy = player_constants::WALK_SPEED;
+		_dx = 0.0f;
+		playAnimation("WalkDown");
+		facing = DOWN;
+	}
 }
 
 void Player::runDown()
 {
-	_dy = player_constants::RUN_SPEED;
-	_dx = 0.0f;
-	playAnimation("RunDown");
-	facing = DOWN;
+	if (_y > 503.0f) { _dy = 0.0f; }
+	else
+	{
+		_dy = player_constants::RUN_SPEED;
+		_dx = 0.0f;
+		playAnimation("RunDown");
+		facing = DOWN;
+	}
 }
 
 void Player::moveRight(int levelWidth)
 {
-	if (_x > (levelWidth/2)) { _dx = 0.0f; }
+	if (_x > 930.0f) { _dx = 0.0f; }
 	else
 	{
 		_dx = player_constants::WALK_SPEED;
@@ -85,7 +111,7 @@ void Player::moveRight(int levelWidth)
 
 void Player::runRight(int levelWidth)
 {
-	if (_x > (levelWidth/2 )) { _dx = 0.0f; }
+	if (_x > 930.0f) { _dx = 0.0f; }
 	else
 	{
 		_dx = player_constants::RUN_SPEED;
@@ -97,7 +123,7 @@ void Player::runRight(int levelWidth)
 
 void Player::moveLeft(int levelWidth)
 {
-	if (_x < 5) { _dx = 0.0f; }
+	if (_x < 5.0f) { _dx = 0.0f; }
 	else
 	{
 		_dx = -player_constants::WALK_SPEED;
@@ -109,7 +135,7 @@ void Player::moveLeft(int levelWidth)
 
 void Player::runLeft(int levelWidth)
 {
-	if (_x < 5) { _dx = 0.0f; }
+	if (_x < 5.0f) { _dx = 0.0f; }
 	else
 	{
 		_dx = -player_constants::RUN_SPEED;
@@ -144,11 +170,6 @@ void Player::stopMoving()
 }
 
 void Player::animationDone(string currentAnimation)
-{
-
-}
-
-void Player::setCamera()
 {
 
 }

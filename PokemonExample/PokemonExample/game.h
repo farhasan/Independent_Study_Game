@@ -13,7 +13,7 @@ public:
 	~Game();
 private:
 	void gameLoop();
-	void draw(Graphics &graphics, int mapNum);
+	void draw(Graphics &graphics, int mapNum, SDL_Rect& camera);
 	void update(float elapsedTime, int mapNum);
 
 	Player _player;
