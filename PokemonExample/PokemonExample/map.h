@@ -1,6 +1,7 @@
 #ifndef MAP_H
 
 #include <vector>
+#include "tile.h"
 
 using std::vector;
 
@@ -19,13 +20,14 @@ public:
 
 	vector<vector<Sprite*>> getMapTiles;
 	
-	static void createPokeCenter(Map* map, Sprite* pokeCenter, int rowCoord, int colCoord);
-	static void createPokeMart(Map* map, Sprite* pokeMart, int rowCoord, int colCoord);
-	static void createSmallTrees(Map* map, Sprite* tree, int rowCoord, int colCoord);
-	static void createPath(Map* map, Sprite* leftTile, Sprite* middleTile, Sprite* rightTile, int rowCoord, int numCols);
-	static void createRegularGrass(Map* map, Sprite* regularGrass, int row, int col, int numRows, int numCols);
+	static void createPokeCenter(Map* map, Tile pokeCenter, int rowCoord, int colCoord);
+	static void createPokeMart(Map* map, Tile pokeMart, int rowCoord, int colCoord);
+	static void createSmallTrees(Map* map, Tile tree, int rowCoord, int colCoord);
+	static void createPath(Map* map, Tile leftTile, Tile middleTile, Tile rightTile, int rowCoord, int numCols);
+	static void createRegularGrass(Map* map, Tile regularGrass, int row, int col, int numRows, int numCols);
 private:
-	vector<vector<Sprite*>> mapTiles;
+
+	vector<vector<Tile>> mapTiles;
 };
 
 #endif // !MAP_H
